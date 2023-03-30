@@ -48,6 +48,17 @@ public class MainFrame extends JFrame{
                          case Identificador: case Numero: case Reservadas:
                              resultado+=lexer.lexema + " :Es un "+ tokens+ "\n";
                              break;
+                         case OR: case AND: case XOR:
+                             resultado+=lexer.lexema + " :Es la compuerta logica " +tokens+"\n";
+                             break;
+                         case Suma: case Resta: case Division: case Multiplicacion:
+                         case Igual: case Mayor: case Menor: case Modular: case MayorIgual:
+                         case MenorIgual: case ExactamenteIgual: case Negacion: case Diferente:
+                         case Decremento: case Incremento:
+                             resultado+= lexer.lexema +" :Es la operación " +tokens+"\n";
+                             break;
+                         case Signos:
+                             resultado+= lexer.lexema +": Es un signo\n";
                          default:
                              resultado+="Token: "+tokens+"\n";
                              break;

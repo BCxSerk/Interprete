@@ -22,5 +22,6 @@ public enum Tokens {
     XOR,
     Identificador,
     Numero,
-    ERROR
+    ERROR,
+    Signos
 }

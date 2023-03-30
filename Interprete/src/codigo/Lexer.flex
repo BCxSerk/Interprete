@@ -5,6 +5,7 @@ import static codigo.Tokens.*;
 %type Tokens
 L=[a-zA-Z_]+
 D=[0-9]+
+S=["[","]","{","}",".",",","¬",":",";","-","_","#","$","'","¿","?"]+
 espacio=[ ,\t,\r,\n]+
 %{
     public String lexema;
@@ -60,7 +61,7 @@ transient |
 try |
 void |
 volatile |
-while {lexeme=yytext(); return Reservadas;}
+while {lexema=yytext(); return Reservadas;}
 {espacio} {/*Ignore*/}
 "//".* {/*Ignore*/}
 "=" {return Igual;}
@@ -81,6 +82,7 @@ while {lexeme=yytext(); return Reservadas;}
 "&&" {return AND;}
 "||" {return OR;}
 "^" {return XOR;}
-{L}({L}|{D})* {lexeme=yytext(); return Identificador;}
-("(-"{D}+")")|{D}+ {lexeme=yytext(); return Numero;}
+{L}({L}|{D})* {lexema=yytext(); return Identificador;}
+("(-"{D}+")")|{D}+ {lexema=yytext(); return Numero;}
  . {return ERROR;}
+ {S}* {lexema=yytext(); return Signos;}
